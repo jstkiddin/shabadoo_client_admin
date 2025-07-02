@@ -1,0 +1,16 @@
+body {
+  margin: 0rem;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.backimage {
+  height:100vh;
+  width: 100vw;
+   position:absolute;    
+   z-index:-999;
+   background: transparent url("../public/back-dino.png") repeat scroll 0% 0%;
+  opacity: 0.3;
+  filter: blur(0.1rem);
+}
