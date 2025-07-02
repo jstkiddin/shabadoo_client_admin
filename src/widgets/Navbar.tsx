@@ -1,16 +1,36 @@
 import { Box, Typography } from '@mui/material'
 import OutlinedButton from '@shared/components/buttons/OutlinedButton'
+import { useCallback, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const NavbarNames = ['Дашборд', 'Розклад', 'Вчителі', 'Студенти', 'Групи']
+const navbarItems = [
+  { path: '/dashboard', name: 'Дашборд' },
+  { path: '/schedule', name: 'Розклад' },
+  { path: '/teachers', name: 'Вчителі' },
+  { path: '/students', name: 'Студенти' },
+  { path: '/groups', name: 'Групи' },
+]
 
 function Navbar() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [isActive, setIsActive] = useState<string>(location.pathname)
+
+  const onClickAction = useCallback((path: string) => {
+    setIsActive(path)
+    navigate(path)
+    return path
+  }, [])
+
   return (
     <NavbarBox>
       <MenuBox>
-        {NavbarNames.map(name => (
-          <OutlinedButton>
-            <Typography fontSize={14}>{name}</Typography>
+        {navbarItems.map(item => (
+          <OutlinedButton onClick={() => onClickAction(item.path)}>
+            <StyledTypography active={isActive == item.path} fontSize={14}>
+              {item.name}
+            </StyledTypography>
           </OutlinedButton>
         ))}
       </MenuBox>
@@ -41,4 +61,8 @@ const MenuBox = styled(Box)`
 
   padding: 0rem 2rem;
   gap: 0.5rem;
+`
+
+const StyledTypography = styled(Typography)<{ active: boolean }>`
+  ${({ active }) => (active ? 'color:#a44aff' : '')}
 `
