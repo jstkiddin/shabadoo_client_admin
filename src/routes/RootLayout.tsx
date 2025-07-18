@@ -5,6 +5,9 @@ import Schedule from '../pages/Schedule'
 import Students from '../pages/Students'
 import Teachers from '../pages/Teachers'
 import Groups from '../pages/Groups'
+import styled from 'styled-components'
+import { Box } from '@mui/material'
+import { AppWrapper } from '@shared/wrappers/BaseWrapper'
 
 const About = () => <h2>About Page</h2>
 const NotFound = () => <h2>404: Page Not Found</h2>
@@ -46,10 +49,10 @@ export const router = createBrowserRouter([
 
 function BaseLayout() {
   return (
-    <>
+    <AppWrapper>
       <Navbar />
       <Outlet />
-    </>
+    </AppWrapper>
   )
 }
 

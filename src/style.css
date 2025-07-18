@@ -1,16 +1,15 @@
 body {
   margin: 0rem;
-  display: flex;
-  justify-content: center;
+  height: 100vh;
   
 }
 
 .backimage {
-  height:100vh;
-  width: 100vw;
+  height:100%;
+  width: 97vw;
    position:absolute;    
    z-index:-999;
    background: transparent url("../public/back-dino.png") repeat scroll 0% 0%;
-  opacity: 0.3;
+  opacity: 0.02;
   filter: blur(0.1rem);
 }

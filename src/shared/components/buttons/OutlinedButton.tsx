@@ -4,13 +4,30 @@ import styled from 'styled-components'
 
 type Props = {
   children: string | JSX.Element | JSX.Element[] | null
-
+  id: string
+  active: boolean
   onClick: () => {}
+  startIcon?: JSX.Element
+  endIcon?: JSX.Element
 }
 
-function OutlinedButton({ children, onClick }: Props) {
+function OutlinedButton({
+  startIcon,
+  endIcon,
+  active,
+  children,
+  id,
+  onClick,
+}: Props) {
   return (
-    <CustomButton onClick={(e: any) => onClick()} variant="text">
+    <CustomButton
+      active={active}
+      startIcon={startIcon}
+      endIcon={endIcon}
+      id={id}
+      onClick={(e: any) => onClick()}
+      variant="text"
+    >
       {children}
     </CustomButton>
   )
@@ -18,21 +35,22 @@ function OutlinedButton({ children, onClick }: Props) {
 
 export default OutlinedButton
 
-const CustomButton = styled(Button)`
-  color: #000000 !important;
-  border-radius: 1rem !important;
-  height: 80%;
-  width: 40%;
-
+const CustomButton = styled(Button)<{ active: boolean }>`
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start !important;
+
+  padding-left: 1.5rem !important;
+
+  color: ${({ active }) => (active ? '#a44aff' : '#000000')} !important;
+  border-radius: 0rem !important;
 
   &:hover {
     background: rgba(164, 74, 255, 0.08) !important;
   }
 
   &:hover:after {
-    width: 88%;
+    width: 100%;
   }
 
   &::after {
@@ -40,7 +58,7 @@ const CustomButton = styled(Button)`
     height: 2px;
     position: absolute;
     bottom: 0px;
-    left: 0.7rem;
+    left: 0px;
     width: 0%;
     background-color: #a44aff;
 

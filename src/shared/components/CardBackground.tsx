@@ -12,14 +12,12 @@ function CardBackground({
 
 export default CardBackground
 
-const Background = styled(Card)`
-  width: 97vw;
-  height: 100%;
+const Background = styled(Box)`
+  width: 100%;
+  height: 90vh;
 
   position: relative;
 
-  margin: 0.5rem 1rem;
-  // boder-radius: 2rem;
-
-  box-shadow: 2px 9px 35px 0px rgba(0, 0, 0, 0.69);
+  display: flex;
+  justify-content: center;
 `

@@ -1,10 +1,13 @@
 import CardBackground from '@shared/components/CardBackground'
-import BaseWrapper from '@shared/wrappers/BaseWrapper'
+import { BaseWrapper } from '@shared/wrappers/BaseWrapper'
+import TeachersListPage from '../features/teachers/pages/TeachersListPage'
 
 function Teachers() {
   return (
     <BaseWrapper>
-      <CardBackground>Teachers</CardBackground>
+      <CardBackground>
+        <TeachersListPage />
+      </CardBackground>
     </BaseWrapper>
   )
 }

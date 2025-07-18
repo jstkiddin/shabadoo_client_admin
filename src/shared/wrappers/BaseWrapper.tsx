@@ -2,17 +2,26 @@ import { Box } from '@mui/material'
 import { JSX } from 'react'
 import styled from 'styled-components'
 
-function BaseWrapper({
-  children,
-}: {
+type WrappersProps = {
   children: string | JSX.Element | JSX.Element[] | null
-}) {
+}
+
+export function BaseWrapper({ children }: WrappersProps) {
   return <Wrapper>{children}</Wrapper>
 }
 
-export default BaseWrapper
+export const AppWrapper = ({ children }: WrappersProps) => {
+  return <GeneralWrapper>{children} </GeneralWrapper>
+}
 
 const Wrapper = styled(Box)`
   width: 100%;
-  height: 100%;
+`
+const GeneralWrapper = styled(Box)`
+  position: relative;
+
+  display: flex;
+  justify-content: start;
+
+  height: 99.8vh;
 `
